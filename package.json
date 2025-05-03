@@ -1,0 +1,39 @@
+{
+  "name": "tss-frida-plugin",
+  "version": "1.0.0",
+  "description": "Typescript plugin to enhance frida scripts development",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChiChou/tss-frida.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "frida",
+    "hacking",
+    "mobile",
+    "reverse engineering"
+  ],
+  "author": "codecolorist",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChiChou/tss-frida/issues"
+  },
+  "homepage": "https://github.com/ChiChou/tss-frida#readme",
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "tslint": "^5.20.1",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "typescript-template-language-service-decorator": "^2.3.2",
+    "vscode-languageserver-types": "^3.17.5"
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch:compile": "tsc -p . --watch",
+    "test": "node --experimental-strip-types --test e2e/tests/**/*.ts",
+    "lint": "tslint -p ."
+  }
+}
