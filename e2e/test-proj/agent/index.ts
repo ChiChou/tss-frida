@@ -20,4 +20,3 @@ Interceptor.attach(Module.getExportByName(null, "open"), {
         log(`open() path="${path}"`);
     }
 });
-
