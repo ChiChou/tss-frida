@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "main": "agent/index.ts",
+  "scripts": {
+    "build": "echo 'this is a test case, we do not actually invoke frida-compile'"
+  },
+  "devDependencies": {
+    "@types/frida-gum": "^18.3.1",
+    "@types/node": "^18.14.0",
+    "tss-frida-plugin": "file:../..",
+    "typescript": "^5.8.3"
+  }
+}

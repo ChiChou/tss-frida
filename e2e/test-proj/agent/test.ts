@@ -1,0 +1,1 @@
+const java = Java.use('android.app.Activity'); 

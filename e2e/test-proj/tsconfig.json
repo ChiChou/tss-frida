@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": ["es2020"],
+    "module": "Node16",
+    "allowJs": true,
+    "noEmit": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node16"
+  },
+  "exclude": ["_agent.js"],
+  "plugins": [
+    "tss-frida-plugin"
+  ]
+}
