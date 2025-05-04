@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type * as ts from "typescript/lib/tsserverlibrary";
 
 type LanguageServiceMethodWrapper<K extends keyof ts.LanguageService> = (
@@ -30,6 +31,7 @@ export class FridaLanguageServiceProxy {
             );
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         languageService.getApplicableRefactors;
 
         return new Proxy(languageService, {

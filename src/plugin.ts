@@ -4,7 +4,9 @@ import { LanguageServiceLogger } from "./logger";
 import { FridaLanguageServiceProxy } from "./decorator";
 import { CustomizedLanguageService } from "./service";
 
-interface SynchronizedConfiguration {};
+interface SynchronizedConfiguration {
+    pythonPath?: string;
+};
 
 export class FridaScriptPlugin {
     private logger?: LanguageServiceLogger;

@@ -13,11 +13,15 @@ function tokensToCompletions(tokenList?: string): ts.CompletionEntry[] {
   }));
 }
 
-
+// todo: dynamically load from ipc
 const state = {
-  classes: tokensToCompletions('NSObject,NSArray,NSDictionary'),
-  protocols: tokensToCompletions('NSXPCListenerDelegate,NSURLSessionDelegate'),
+  classes: tokensToCompletions("NSObject,NSArray,NSDictionary"),
+  protocols: tokensToCompletions("NSXPCListenerDelegate,NSURLSessionDelegate"),
 };
+
+function isFridaGum(info: ts.DefinitionInfo) {
+  return info.fileName.endsWith("/node_modules/@types/frida-gum/index.d.ts");
+}
 
 export class CustomizedLanguageService implements ICustomizedLanguageServie {
   constructor(
@@ -25,11 +29,10 @@ export class CustomizedLanguageService implements ICustomizedLanguageServie {
     private readonly typescript: typeof ts,
     private readonly logger: LanguageServiceLogger
   ) {
-    void this.logger;
-    void this.typescript;
+    this.logger.log(`loaded in ts ${this.typescript.version}`);
   }
 
-  getCompletionsAtPosition(fileName: string, position: number, options: ts.GetCompletionsAtPositionOptions | undefined) {
+  getCompletionsAtPosition(fileName: string, position: number, options: ts.GetCompletionsAtPositionOptions) {
     const prior = this.info.languageService.getCompletionsAtPosition(fileName, position, options);
     if (!prior) return;
 
@@ -37,7 +40,7 @@ export class CustomizedLanguageService implements ICustomizedLanguageServie {
       const typeDef = this.info.languageService.getTypeDefinitionAtPosition(fileName, position - 1);
       if (typeDef && typeDef.length === 1) {
         const first = typeDef[0];
-        if (first.fileName.endsWith('/node_modules/@types/frida-gum/index.d.ts')) {
+        if (isFridaGum(first)) {
           if (first.name === 'classes') {
             prior.entries = state.classes;
           } else if (first.name === 'protocols') {

@@ -21,10 +21,13 @@
   },
   "homepage": "https://github.com/ChiChou/tss-frida#readme",
   "devDependencies": {
+    "@eslint/js": "^9.26.0",
     "@types/node": "^22.15.3",
-    "tslint": "^5.20.1",
+    "eslint": "^9.26.0",
+    "globals": "^16.0.0",
     "tsx": "^4.19.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.31.1"
   },
   "dependencies": {
     "typescript-template-language-service-decorator": "^2.3.2",
@@ -34,6 +37,6 @@
     "compile": "tsc -p .",
     "watch:compile": "tsc -p . --watch",
     "test": "node --experimental-strip-types --test e2e/tests/**/*.ts",
-    "lint": "tslint -p ."
+    "lint": "eslint --ext .ts src"
   }
 }
