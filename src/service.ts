@@ -2,6 +2,8 @@ import * as ts from "typescript/lib/tsserverlibrary";
 import { ICustomizedLanguageServie } from "./decorator";
 import { LanguageServiceLogger } from "./logger";
 
+import "../typescript-private"
+
 function tokensToCompletions(tokenList?: string): ts.CompletionEntry[] {
   if (!tokenList) return [];
 
